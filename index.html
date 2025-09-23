@@ -451,7 +451,7 @@
       font-size: 1.6rem
     }
 
-    /* ====== SLIDE 6 — TAM/SAM/SOM con círculos y etiquetas ====== */
+    /* ====== SLIDE 6 — TAM/SAM/SOM sin líneas conectoras ====== */
     .slide6 {
       background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
     }
@@ -460,19 +460,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 48px;
+      gap: 60px;
       flex-wrap: wrap;
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
     .rings {
       position: relative;
-      width: 520px;
-      height: 520px;
+      width: 450px;
+      height: 450px;
     }
 
-    /* Círculos (tamaños no a escala exacta para legibilidad) */
     .ring {
       position: absolute;
       border-radius: 50%;
@@ -488,159 +487,119 @@
       font-weight: 800;
       letter-spacing: .4px;
       line-height: 1.15;
+      font-size: 1.1rem;
     }
 
     .ring .center-tag small {
       display: block;
       font-weight: 600;
-      opacity: .95
+      opacity: .95;
+      font-size: 0.8rem;
     }
 
-    /* Tamaños / colores (consistente con paleta) */
     .ring.tam {
-      width: 520px;
-      height: 520px;
+      width: 450px;
+      height: 450px;
       top: 0;
       left: 0;
-      background: rgba(125, 211, 252, .38);
+      background: rgba(125, 211, 252, .4);
       border: 3px solid #7dd3fc;
       color: #0f3a6d;
     }
 
     .ring.sam {
-      width: 360px;
-      height: 360px;
-      top: 80px;
-      left: 80px;
-      background: rgba(66, 191, 77, .66);
+      width: 320px;
+      height: 320px;
+      top: 65px;
+      left: 65px;
+      background: rgba(66, 191, 77, .7);
       border: 3px solid #42BF4D;
       color: #0d3a1e;
     }
 
     .ring.som {
-      width: 200px;
-      height: 200px;
-      top: 160px;
-      left: 160px;
+      width: 190px;
+      height: 190px;
+      top: 130px;
+      left: 130px;
       background: linear-gradient(135deg, #2D7A32, #1a5e20);
       border: 3px solid #2D7A32;
       color: #fff;
     }
 
-    /* Puntos y líneas (líderes) hacia las tarjetas de la derecha */
-    .dot {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #2D7A32;
-    }
-
-    .leader {
-      position: absolute;
-      height: 2px;
-      background: #2D7A32;
-      opacity: .8;
-    }
-
-    /* Posicionamos los puntos en el borde derecho de cada aro */
-    .dot.tam {
-      top: calc(520px/2 - 6px);
-      left: calc(520px - 6px);
-      background: #7dd3fc;
-    }
-
-    .dot.sam {
-      top: calc(80px + 360px/2 - 6px);
-      left: calc(80px + 360px - 6px);
-      background: #42BF4D;
-    }
-
-    .dot.som {
-      top: calc(160px + 200px/2 - 6px);
-      left: calc(160px + 200px - 6px);
-      background: #2D7A32;
-    }
-
-    /* Líneas horizontales desde el punto hacia las tarjetas */
-    .leader.tam {
-      top: calc(520px/2 - 1px);
-      left: calc(520px);
-      width: 220px;
-      background: #7dd3fc;
-    }
-
-    .leader.sam {
-      top: calc(80px + 360px/2 - 1px);
-      left: calc(80px + 360px);
-      width: 220px;
-      background: #42BF4D;
-    }
-
-    .leader.som {
-      top: calc(160px + 200px/2 - 1px);
-      left: calc(160px + 200px);
-      width: 220px;
-      background: #2D7A32;
-    }
-
-    /* Tarjetas de etiquetas (derecha) */
     .labels {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 20px;
     }
 
     .label-card {
-      width: 360px;
+      width: 400px;
       background: #fff;
       border-radius: 18px;
-      padding: 18px 20px;
+      padding: 20px 24px;
       box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
       text-align: left;
     }
 
     .label-card h4 {
-      margin: 0 0 6px;
+      margin: 0 0 8px;
       color: #2D7A32;
-      font-size: 1.05rem
+      font-size: 1.1rem;
+      font-weight: 700;
     }
 
     .label-card p {
-      margin: 0;
+      margin: 0 0 12px;
       color: #555;
       line-height: 1.45;
       font-size: .95rem
     }
 
-    .badge-val {
-      display: inline-block;
+    .market-stats {
+      display: flex;
+      gap: 15px;
       margin-top: 8px;
-      padding: 6px 10px;
+    }
+
+    .stat-badge {
+      display: inline-block;
+      padding: 6px 12px;
       border-radius: 999px;
-      font-weight: 800;
-      font-size: .9rem;
+      font-weight: 700;
+      font-size: .85rem;
+    }
+
+    .label-card.tam .stat-badge {
       color: #0f3a6d;
       background: #d7efff;
       border: 1px solid #7dd3fc;
     }
 
-    .label-card.sam .badge-val {
+    .label-card.sam .stat-badge {
       color: #0d3a1e;
       background: #e6f8ea;
-      border-color: #42BF4D;
+      border: 1px solid #42BF4D;
     }
 
-    .label-card.som .badge-val {
+    .label-card.som .stat-badge {
       color: #fff;
       background: #2D7A32;
-      border-color: #2D7A32;
+      border: 1px solid #2D7A32;
+    }
+
+    .revenue-badge {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      color: #856404;
+      font-weight: 800;
     }
 
     .note-legend {
-      margin-top: 10px;
+      margin-top: 15px;
       font-size: .85rem;
-      color: #777
+      color: #777;
+      text-align: center;
     }
 
 
@@ -846,25 +805,44 @@
 
       .problem-blocks {
         flex-direction: column;
-        gap: 40px;
+        gap: 30px;
+        margin-bottom: 30px;
       }
       
-      .connection-arrow {
-        transform: rotate(90deg);
-      }
-      
-      .connection-text {
-        max-width: 200px;
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 20px;
       }
 
       .solution-visual {
         flex-direction: column;
-        gap: 30px
+        gap: 30px;
+        align-items: center;
+      }
+      
+      .whatsapp-phone {
+        width: 280px;
+        height: 500px;
+      }
+      
+      .benefits-section {
+        flex-direction: row;
+        justify-content: space-around;
+        max-width: 100%;
       }
 
       .pricing-comparison {
         flex-direction: column;
         gap: 24px
+      }
+      
+      .gtm-diagram {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .flows {
+        transform: rotate(90deg);
       }
     }
   </style>
@@ -1031,7 +1009,7 @@
         
         <div class="benefits-section">
           <div class="benefit-item">
-            <div class="benefit-amount">$33.000</div>
+            <div class="benefit-amount">$15.000</div>
             <div class="benefit-description">ahorro anual por familia</div>
           </div>
           <div class="benefit-item">
@@ -1093,16 +1071,15 @@
       </div>
     </div>
 
-    <!-- 6 — Potencial de Mercado (círculos con líneas y etiquetas) -->
+    <!-- 6 — Potencial de Mercado sin líneas conectoras -->
     <div class="slide slide6">
       <h2 class="slide-title">Potencial de Mercado</h2>
 
       <div class="market-rings">
-        <!-- Círculos concéntricos -->
         <div class="rings">
           <div class="ring tam">
             <div class="center-tag">
-              TAM<br><small>Américas</small>
+              TAM<br><small>América</small>
             </div>
           </div>
           <div class="ring sam">
@@ -1112,41 +1089,43 @@
           </div>
           <div class="ring som">
             <div class="center-tag">
-              SOM<br><small>Córdoba (Ciudad)</small>
+              SOM<br><small>Córdoba</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="labels">
+          <div class="label-card tam">
+            <h4>TAM — América (LatAm + Norteamérica)</h4>
+            <p>Todas las familias que usan WhatsApp y hacen compras en supermercados en América.</p>
+            <div class="market-stats">
+              <span class="stat-badge">~170 millones de hogares</span>
+              <span class="stat-badge revenue-badge">USD 4.080 M / año</span>
             </div>
           </div>
 
-          <!-- puntos + líneas hacia tarjetas -->
-          <span class="dot tam"></span>
-          <div class="leader tam"></div>
-          <span class="dot sam"></span>
-          <div class="leader sam"></div>
-          <span class="dot som"></span>
-          <div class="leader som"></div>
-        </div>
-
-        <!-- Tarjetas con etiquetas y valores de la TABLA -->
-        <div class="labels">
-          <div class="label-card tam">
-            <h4>TAM — Alcance geográfico: América (LatAm + Norteamérica)</h4>
-            <p>Todas las familias que usan WhatsApp y hacen compras en supermercados en América.</p>
-            <span class="badge-val">~170 millones de hogares</span>
-          </div>
-
           <div class="label-card sam">
-            <h4>SAM — Alcance geográfico: Argentina</h4>
+            <h4>SAM — Argentina</h4>
             <p>Hogares argentinos que usan WhatsApp y compran en supermercados.</p>
-            <span class="badge-val">~16 millones de hogares</span>
+            <div class="market-stats">
+              <span class="stat-badge">~16 millones de hogares</span>
+              <span class="stat-badge revenue-badge">USD 384 M / año</span>
+            </div>
           </div>
 
           <div class="label-card som">
-            <h4>SOM — Alcance geográfico: Ciudad de Córdoba</h4>
-            <p>Primer mercado objetivo para validar el producto (1–2% de CBA Capital).</p>
-            <span class="badge-val">~6k–12k hogares</span>
+            <h4>SOM — Ciudad de Córdoba (1–2% hogares capital)</h4>
+            <p>Primer mercado objetivo para validar el producto.</p>
+            <div class="market-stats">
+              <span class="stat-badge">~6.000–12.000 hogares</span>
+              <span class="stat-badge revenue-badge">USD 0,14 – 0,29 M / año</span>
+            </div>
           </div>
-
-          <div class="note-legend">Nota: los diámetros no son a escala exacta; se optimiza la legibilidad.</div>
         </div>
+      </div>
+
+      <div class="note-legend">
+        Nota: los diámetros no son a escala exacta; se optimiza la legibilidad.
       </div>
     </div>
 
