@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,119 +9,867 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#7dd3fc 0%,#42BF4D 100%);overflow:hidden;color:#333}
-    .slideshow-container{position:relative;width:100%;height:100vh}
-    .slide{display:none;padding:60px;text-align:center;height:100vh;flex-direction:column;justify-content:center;align-items:center;animation:fadeIn .8s ease-in-out}
-    .slide.active{display:flex}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #7dd3fc 0%, #42BF4D 100%);
+      overflow: hidden;
+      color: #333
+    }
+
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: 100vh
+    }
+
+    .slide {
+      display: none;
+      padding: 60px;
+      text-align: center;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn .8s ease-in-out
+    }
+
+    .slide.active {
+      display: flex
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
 
     /* Portada */
-    .slide1{background:linear-gradient(135deg,#7dd3fc 0%,#42BF4D 100%);color:#fff}
-    .logo-container{margin-bottom:40px;animation:slideDown 1s ease-out}
-    .logo{width:300px;height:300px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 60px;box-shadow:0 30px 60px rgba(0,0,0,.15)}
-    .logo img{width:80%;height:auto;display:block}
-    .stocky-title{font-size:4rem;font-weight:700;margin-bottom:20px;text-shadow:0 4px 8px rgba(0,0,0,.1)}
-    .tagline{font-size:1.8rem;font-weight:300;opacity:.9}
+    .slide1 {
+      background: linear-gradient(135deg, #7dd3fc 0%, #42BF4D 100%);
+      color: #fff
+    }
+
+    .logo-container {
+      margin-bottom: 40px;
+      animation: slideDown 1s ease-out
+    }
+
+    .logo {
+      width: 300px;
+      height: 300px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 60px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, .15)
+    }
+
+    .logo img {
+      width: 80%;
+      height: auto;
+      display: block
+    }
+
+    .stocky-title {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, .1)
+    }
+
+    .tagline {
+      font-size: 1.8rem;
+      font-weight: 300;
+      opacity: .9
+    }
 
     /* Equipo */
-    .slide2{background:#fff}
-    .team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;margin-bottom:40px}
-    .team-member{display:flex;flex-direction:column;align-items:center}
-    .member-photo{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#42BF4D 0%,#7dd3fc 100%);margin-bottom:15px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;font-weight:600}
-    .member-photo img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-    .member-name{font-size:1.1rem;font-weight:600;color:#333}
-    .member-role{font-size:1rem;font-weight:600;color:#2D7A32;margin:4px 0}
-    .member-experience{font-size:.95rem;color:#7a7a7a;font-style:italic;display:inline-flex;align-items:center;gap:6px;margin-top:2px}
-    .company-logo{width:18px;height:18px;object-fit:contain;filter:grayscale(20%);vertical-align:middle}
+    .slide2 {
+      background: #fff
+    }
 
-    /* Problema */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      margin-bottom: 40px
+    }
+
+    .team-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center
+    }
+
+    .member-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #42BF4D 0%, #7dd3fc 100%);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 600
+    }
+
+    .member-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%
+    }
+
+    .member-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333
+    }
+
+    .member-role {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #2D7A32;
+      margin: 4px 0
+    }
+
+    .member-experience {
+      font-size: .95rem;
+      color: #7a7a7a;
+      font-style: italic;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 2px
+    }
+
+    .company-logo {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      filter: grayscale(20%);
+      vertical-align: middle
+    }
+
+    /* Problema - Versión híbrida: números grandes + tarjetas originales */
     .slide3{background:#f8fafc}
-    .two-col{display:grid;grid-template-columns:repeat(2,minmax(260px,1fr));gap:40px;max-width:980px;width:100%;margin:20px auto 40px}
-    .audience-card{background:#fff;border-radius:18px;padding:30px 24px;box-shadow:0 10px 30px rgba(0,0,0,.08);text-align:left;transition:transform .3s ease}
-    .audience-card:hover{transform:translateY(-5px)}
-    .audience-title{display:inline-flex;align-items:center;gap:12px;font-weight:700;font-size:1.3rem;color:#2D7A32;margin-bottom:20px}
-    .audience-title .badge{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#eaffef;color:#2D7A32}
-    .bullets{display:grid;gap:14px;color:#555;font-size:1rem}
-    .bullets li{list-style:none;display:flex;gap:10px;align-items:flex-start}
-    .bullets li i{color:#42BF4D;margin-top:4px;font-size:1rem}
+    
+    .problem-blocks {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      margin: 20px auto 30px;
+      max-width: 1000px;
+    }
+    
+    .problem-block {
+      background: white;
+      border-radius: 20px;
+      padding: 30px 25px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      text-align: center;
+      min-width: 280px;
+      transition: transform 0.3s ease;
+    }
+    
+    .problem-block:hover {
+      transform: translateY(-5px);
+    }
+    
+    .problem-icon {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+    
+    .homes-block .problem-icon {
+      color: #7dd3fc;
+    }
+    
+    .supermarkets-block .problem-icon {
+      color: #42BF4D;
+    }
+    
+    .problem-amount {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #2D7A32;
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+    
+    .problem-description {
+      font-size: 1rem;
+      color: #666;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+    
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(260px, 1fr));
+      gap: 40px;
+      max-width: 980px;
+      width: 100%;
+      margin: 20px auto 0;
+    }
+    
+    .audience-card {
+      background: white;
+      border-radius: 18px;
+      padding: 25px 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      text-align: left;
+      transition: transform 0.3s ease;
+    }
+    
+    .audience-card:hover {
+      transform: translateY(-3px);
+    }
+    
+    .audience-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #2D7A32;
+      margin-bottom: 15px;
+    }
+    
+    .audience-title .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #eaffef;
+      color: #2D7A32;
+    }
+    
+    .bullets {
+      display: grid;
+      gap: 10px;
+      color: #555;
+      font-size: 0.9rem;
+    }
+    
+    .bullets li {
+      list-style: none;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    
+    .bullets li i {
+      color: #42BF4D;
+      margin-top: 2px;
+      font-size: 0.9rem;
+    }
 
-    /* Solución */
-    .slide4{background:#fff}
-    .solution-visual{display:flex;align-items:center;justify-content:center;max-width:1000px;margin-bottom:40px;gap:40px}
-    .whatsapp-phone{width:350px;height:610px;background:#25D366;border-radius:34px;padding:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;position:relative;margin:0 auto}
-    .phone-screen{background:#fff;border-radius:22px;width:100%;height:100%;padding:22px;color:#333;display:flex;flex-direction:column;justify-content:space-around}
-    .features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
-    .feature-icon{font-size:3.2rem;color:#42BF4D;margin-bottom:12px}
-    .feature-text{font-size:1rem;color:#666}
+    /* Solución - Estilos actualizados */
+    .slide4 {
+      background: #fff
+    }
+
+    .solution-description {
+      font-size: 1.2rem;
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 40px;
+      max-width: 900px;
+    }
+
+    .solution-visual {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      max-width: 1200px;
+      margin-bottom: 40px;
+      gap: 60px
+    }
+
+    .whatsapp-phone {
+      width: 320px;
+      height: 580px;
+      background: #25D366;
+      border-radius: 30px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      color: #fff;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .phone-screen {
+      background: #fff;
+      border-radius: 20px;
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      overflow: hidden;
+    }
+
+    .phone-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .functionalities-list {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .functionality-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .functionality-emoji {
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .functionality-text strong {
+      color: #2D7A32;
+      font-weight: 600;
+    }
+
+    .benefits-section {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 500px;
+    }
+
+    .benefit-item {
+      text-align: center;
+    }
+
+    .benefit-amount {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2D7A32;
+      margin-bottom: 8px;
+    }
+
+    .benefit-description {
+      font-size: 1rem;
+      color: #666;
+    }
 
     /* ===== Slide 5 — Modelo de Negocio (Marketplace) ===== */
-    .slide5{background:#f8fafc}
-    .model-badge{display:inline-block;padding:10px 16px;border-radius:12px;background:#eaffef;color:#2D7A32;border:1px solid #42BF4D;font-weight:700;margin:-28px 0 24px 0}
-    .gtm-diagram{display:flex;align-items:center;justify-content:center;gap:36px;margin:10px auto 28px;max-width:900px}
-    .actor{background:#fff;border-radius:18px;padding:22px 28px;min-width:220px;box-shadow:0 10px 28px rgba(0,0,0,.08);text-align:center}
-    .actor i{font-size:2rem;color:#42BF4D;margin-bottom:8px;display:block}
-    .actor .label{font-weight:700;color:#2D7A32}
-    .flows{display:flex;flex-direction:column;align-items:center;gap:10px;color:#2D7A32}
-    .flows i{font-size:1.6rem}
+    .slide5 {
+      background: #f8fafc
+    }
 
-    /* ===== Slide 6 — Potencial de Mercado (barras + leyenda) ===== */
-    .slide6{background:linear-gradient(135deg,#e0f2fe 0%,#f0f9ff 100%)}
-    .market-wrap{display:flex;flex-direction:column;align-items:center;gap:24px}
-    .market-bar-chart{max-width:820px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:18px}
-    .bar{display:flex;align-items:center;gap:16px}
-    .bar .label{flex:0 0 260px;text-align:right;font-weight:600;color:#333}
-    .bar .value{flex:1;padding:10px 14px;border-radius:10px;font-weight:800;color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.08)}
-    .bar .tam{background:#7dd3fc}
-    .bar .sam{background:#42BF4D}
-    .bar .som{background:#2D7A32}
-    .market-legend{background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 10px 24px rgba(0,0,0,.08);max-width:820px;width:100%;text-align:left}
-    .market-legend h4{margin:0 0 8px;color:#2D7A32}
-    .market-legend ul{margin:0;padding-left:18px;color:#555;line-height:1.5}
-    .note{margin-top:6px;font-size:.85rem;color:#777}
+    .model-badge {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: #eaffef;
+      color: #2D7A32;
+      border: 1px solid #42BF4D;
+      font-weight: 700;
+      margin: -28px 0 24px 0
+    }
+
+    .gtm-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      margin: 10px auto 28px;
+      max-width: 900px
+    }
+
+    .actor {
+      background: #fff;
+      border-radius: 18px;
+      padding: 22px 28px;
+      min-width: 220px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .08);
+      text-align: center
+    }
+
+    .actor i {
+      font-size: 2rem;
+      color: #42BF4D;
+      margin-bottom: 8px;
+      display: block
+    }
+
+    .actor .label {
+      font-weight: 700;
+      color: #2D7A32
+    }
+
+    .flows {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: #2D7A32
+    }
+
+    .flows i {
+      font-size: 1.6rem
+    }
+
+    /* ====== SLIDE 6 — TAM/SAM/SOM con círculos y etiquetas ====== */
+    .slide6 {
+      background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+    }
+
+    .market-rings {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .rings {
+      position: relative;
+      width: 520px;
+      height: 520px;
+    }
+
+    /* Círculos (tamaños no a escala exacta para legibilidad) */
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+    }
+
+    .ring .center-tag {
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: .4px;
+      line-height: 1.15;
+    }
+
+    .ring .center-tag small {
+      display: block;
+      font-weight: 600;
+      opacity: .95
+    }
+
+    /* Tamaños / colores (consistente con paleta) */
+    .ring.tam {
+      width: 520px;
+      height: 520px;
+      top: 0;
+      left: 0;
+      background: rgba(125, 211, 252, .38);
+      border: 3px solid #7dd3fc;
+      color: #0f3a6d;
+    }
+
+    .ring.sam {
+      width: 360px;
+      height: 360px;
+      top: 80px;
+      left: 80px;
+      background: rgba(66, 191, 77, .66);
+      border: 3px solid #42BF4D;
+      color: #0d3a1e;
+    }
+
+    .ring.som {
+      width: 200px;
+      height: 200px;
+      top: 160px;
+      left: 160px;
+      background: linear-gradient(135deg, #2D7A32, #1a5e20);
+      border: 3px solid #2D7A32;
+      color: #fff;
+    }
+
+    /* Puntos y líneas (líderes) hacia las tarjetas de la derecha */
+    .dot {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #2D7A32;
+    }
+
+    .leader {
+      position: absolute;
+      height: 2px;
+      background: #2D7A32;
+      opacity: .8;
+    }
+
+    /* Posicionamos los puntos en el borde derecho de cada aro */
+    .dot.tam {
+      top: calc(520px/2 - 6px);
+      left: calc(520px - 6px);
+      background: #7dd3fc;
+    }
+
+    .dot.sam {
+      top: calc(80px + 360px/2 - 6px);
+      left: calc(80px + 360px - 6px);
+      background: #42BF4D;
+    }
+
+    .dot.som {
+      top: calc(160px + 200px/2 - 6px);
+      left: calc(160px + 200px - 6px);
+      background: #2D7A32;
+    }
+
+    /* Líneas horizontales desde el punto hacia las tarjetas */
+    .leader.tam {
+      top: calc(520px/2 - 1px);
+      left: calc(520px);
+      width: 220px;
+      background: #7dd3fc;
+    }
+
+    .leader.sam {
+      top: calc(80px + 360px/2 - 1px);
+      left: calc(80px + 360px);
+      width: 220px;
+      background: #42BF4D;
+    }
+
+    .leader.som {
+      top: calc(160px + 200px/2 - 1px);
+      left: calc(160px + 200px);
+      width: 220px;
+      background: #2D7A32;
+    }
+
+    /* Tarjetas de etiquetas (derecha) */
+    .labels {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .label-card {
+      width: 360px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
+      text-align: left;
+    }
+
+    .label-card h4 {
+      margin: 0 0 6px;
+      color: #2D7A32;
+      font-size: 1.05rem
+    }
+
+    .label-card p {
+      margin: 0;
+      color: #555;
+      line-height: 1.45;
+      font-size: .95rem
+    }
+
+    .badge-val {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: .9rem;
+      color: #0f3a6d;
+      background: #d7efff;
+      border: 1px solid #7dd3fc;
+    }
+
+    .label-card.sam .badge-val {
+      color: #0d3a1e;
+      background: #e6f8ea;
+      border-color: #42BF4D;
+    }
+
+    .label-card.som .badge-val {
+      color: #fff;
+      background: #2D7A32;
+      border-color: #2D7A32;
+    }
+
+    .note-legend {
+      margin-top: 10px;
+      font-size: .85rem;
+      color: #777
+    }
+
 
     /* Pricing */
-    .slide7{background:#f8fafc}
-    .pricing-comparison{display:flex;justify-content:center;gap:60px;margin-bottom:40px}
-    .pricing-card{background:#fff;padding:40px;border-radius:20px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.1);min-width:200px}
-    .pricing-icon{font-size:3rem;margin-bottom:20px}
-    .families-card .pricing-icon{color:#7dd3fc}
-    .supermarkets-card .pricing-icon{color:#42BF4D}
-    .pricing-title{font-size:1.3rem;font-weight:600;margin-bottom:15px}
-    .pricing-amount{font-size:2rem;font-weight:700;color:#2D7A32;margin-bottom:10px}
-    .pricing-detail{font-size:.9rem;color:#666}
+    .slide7 {
+      background: #f8fafc
+    }
+
+    .pricing-comparison {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-bottom: 40px
+    }
+
+    .pricing-card {
+      background: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+      min-width: 200px
+    }
+
+    .pricing-icon {
+      font-size: 3rem;
+      margin-bottom: 20px
+    }
+
+    .families-card .pricing-icon {
+      color: #7dd3fc
+    }
+
+    .supermarkets-card .pricing-icon {
+      color: #42BF4D
+    }
+
+    .pricing-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 15px
+    }
+
+    .pricing-amount {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2D7A32;
+      margin-bottom: 10px
+    }
+
+    .pricing-detail {
+      font-size: .9rem;
+      color: #666
+    }
 
     /* Contacto */
-    .slide8{background:linear-gradient(135deg,#2D7A32 0%,#42BF4D 100%);color:#fff}
-    .contact-logo{width:150px;height:150px;background:#fff;border-radius:50%;margin:0 auto 40px;display:flex;align-items:center;justify-content:center}
-    .contact-logo img{width:78%;height:auto;display:block}
-    .contact-email{font-size:2rem;font-weight:600;margin-bottom:30px}
-    .social-icons{display:flex;gap:30px;justify-content:center}
-    .social-icon{width:60px;height:60px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;transition:.3s}
-    .social-icon:hover{background:rgba(255,255,255,.3);transform:translateY(-5px)}
+    .slide8 {
+      background: linear-gradient(135deg, #2D7A32 0%, #42BF4D 100%);
+      color: #fff
+    }
+
+    .contact-logo {
+      width: 150px;
+      height: 150px;
+      background: #fff;
+      border-radius: 50%;
+      margin: 0 auto 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .contact-logo img {
+      width: 78%;
+      height: auto;
+      display: block
+    }
+
+    .contact-email {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 30px
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 30px;
+      justify-content: center
+    }
+
+    .social-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, .2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: .3s
+    }
+
+    .social-icon:hover {
+      background: rgba(255, 255, 255, .3);
+      transform: translateY(-5px)
+    }
 
     /* Títulos, nav, etc */
-    .slide-title{font-size:3rem;font-weight:700;margin-bottom:60px;color:#2D7A32}
-    .slide1 .slide-title,.slide8 .slide-title{color:#fff}
-    .team-description{font-size:1.3rem;color:#666;max-width:800px;line-height:1.6}
-    .slide-indicator{position:fixed;top:30px;right:30px;color:rgba(255,255,255,.8);font-size:1.1rem;font-weight:600;z-index:1000}
-    .slide2 .slide-indicator,.slide3 .slide-indicator,.slide4 .slide-indicator,.slide5 .slide-indicator,.slide6 .slide-indicator,.slide7 .slide-indicator{color:rgba(51,51,51,.8)}
-    .navigation{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:15px;z-index:9999}
-    .nav-btn{padding:12px 24px;background:rgba(255,255,255,.95);border:none;border-radius:25px;cursor:pointer;font-weight:600;color:#333;backdrop-filter:blur(6px);box-shadow:0 6px 16px rgba(0,0,0,.18)}
-    .nav-btn:hover{background:#fff;transform:translateY(-2px)}
-    @keyframes slideDown{from{transform:translateY(-50px);opacity:0}to{transform:translateY(0);opacity:1}}
+    .slide-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 60px;
+      color: #2D7A32
+    }
 
-    @media (max-width:768px){
-      .slide{padding:30px 20px}
-      .stocky-title{font-size:2.6rem}
-      .tagline{font-size:1.2rem}
-      .team-grid{grid-template-columns:1fr;gap:30px}
-      .two-col{grid-template-columns:1fr;gap:30px}
-      .solution-visual{flex-direction:column;gap:30px}
-      .pricing-comparison{flex-direction:column;gap:24px}
+    .slide1 .slide-title,
+    .slide8 .slide-title {
+      color: #fff
+    }
+
+    .team-description {
+      font-size: 1.3rem;
+      color: #666;
+      max-width: 800px;
+      line-height: 1.6
+    }
+
+    .slide-indicator {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      color: rgba(255, 255, 255, .8);
+      font-size: 1.1rem;
+      font-weight: 600;
+      z-index: 1000
+    }
+
+    .slide2 .slide-indicator,
+    .slide3 .slide-indicator,
+    .slide4 .slide-indicator,
+    .slide5 .slide-indicator,
+    .slide6 .slide-indicator,
+    .slide7 .slide-indicator {
+      color: rgba(51, 51, 51, .8)
+    }
+
+    .navigation {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      z-index: 9999
+    }
+
+    .nav-btn {
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, .95);
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #333;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, .18)
+    }
+
+    .nav-btn:hover {
+      background: #fff;
+      transform: translateY(-2px)
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-50px);
+        opacity: 0
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1
+      }
+    }
+
+    @media (max-width:768px) {
+      .slide {
+        padding: 30px 20px
+      }
+
+      .stocky-title {
+        font-size: 2.6rem
+      }
+
+      .tagline {
+        font-size: 1.2rem
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+        gap: 30px
+      }
+
+      .problem-blocks {
+        flex-direction: column;
+        gap: 40px;
+      }
+      
+      .connection-arrow {
+        transform: rotate(90deg);
+      }
+      
+      .connection-text {
+        max-width: 200px;
+      }
+
+      .solution-visual {
+        flex-direction: column;
+        gap: 30px
+      }
+
+      .pricing-comparison {
+        flex-direction: column;
+        gap: 24px
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="slideshow-container">
     <div class="slide-indicator"><span id="current-slide">1</span> / 8</div>
@@ -129,7 +878,8 @@
     <div class="slide slide1 active">
       <div class="logo-container">
         <div class="logo">
-          <img src="./stocky-logo.png" alt="Logo Stocky" onerror="this.parentElement.innerHTML='<i class=&quot;fas fa-shopping-cart&quot; style=&quot;color:#42BF4D;font-size:3.2rem&quot;></i>'">
+          <img src="./stocky-logo.png" alt="Logo Stocky"
+            onerror="this.parentElement.innerHTML='<i class=&quot;fas fa-shopping-cart&quot; style=&quot;color:#42BF4D;font-size:3.2rem&quot;></i>'">
         </div>
       </div>
       <h1 class="stocky-title">Stocky</h1>
@@ -144,76 +894,155 @@
           <div class="member-photo"><img src="./franco.jpeg" alt="Franco Tallone Maffia"></div>
           <div class="member-name">Franco Tallone Maffia</div>
           <div class="member-role">CEO</div>
-          <div class="member-experience">Ex Product Manager Mercado Libre <img class="company-logo" src="./logos/mercadolibre.png" alt="Mercado Libre" onerror="this.style.display='none'"></div>
+          <div class="member-experience">Ex Product Manager Mercado Libre <img class="company-logo"
+              src="./logos/mercadolibre.png" alt="Mercado Libre" onerror="this.style.display='none'"></div>
         </div>
         <div class="team-member">
           <div class="member-photo"><img src="./lu.jpeg" alt="Lucila Gomez"></div>
           <div class="member-name">Lucila Gomez</div>
           <div class="member-role">CTO</div>
-          <div class="member-experience">Ex Tech Lead Globant <img class="company-logo" src="./logos/globant.png" alt="Globant" onerror="this.style.display='none'"></div>
+          <div class="member-experience">Ex Tech Lead Globant <img class="company-logo" src="./logos/globant.png"
+              alt="Globant" onerror="this.style.display='none'"></div>
         </div>
         <div class="team-member">
           <div class="member-photo"><img src="./fotos/valentina.jpg" alt="Valentina Perona"></div>
           <div class="member-name">Valentina Perona</div>
           <div class="member-role">CFO</div>
-          <div class="member-experience">Ex Product Manager Ualá <img class="company-logo" src="./logos/uala.png" alt="Ualá" onerror="this.style.display='none'"></div>
+          <div class="member-experience">Ex Product Manager Ualá <img class="company-logo" src="./logos/uala.png"
+              alt="Ualá" onerror="this.style.display='none'"></div>
         </div>
         <div class="team-member">
           <div class="member-photo"><img src="./santos.jpeg" alt="Santos Romero Reyna"></div>
           <div class="member-name">Santos Romero Reyna</div>
           <div class="member-role">CMO</div>
-          <div class="member-experience">Ex Marketing Lead Despegar <img class="company-logo" src="./logos/despegar.png" alt="Despegar" onerror="this.style.display='none'"></div>
+          <div class="member-experience">Ex Marketing Lead Despegar <img class="company-logo" src="./logos/despegar.png"
+              alt="Despegar" onerror="this.style.display='none'"></div>
         </div>
       </div>
       <p class="team-description">Equipo de Ingeniería de Sistemas con experiencia en IA, software y gestión.</p>
     </div>
 
-    <!-- 3 -->
+    <!-- 3 - Versión híbrida: números grandes + detalles en tarjetas -->
     <div class="slide slide3">
       <h2 class="slide-title">El Problema</h2>
+      
+      <!-- Números grandes arriba -->
+      <div class="problem-blocks">
+        <div class="problem-block homes-block">
+          <i class="fas fa-home problem-icon"></i>
+          <div class="problem-amount">$396.000</div>
+          <div class="problem-description">desperdiciados por hogar/año</div>
+        </div>
+        
+        <div class="problem-block supermarkets-block">
+          <i class="fas fa-shopping-cart problem-icon"></i>
+          <div class="problem-amount">Millones</div>
+          <div class="problem-description">en pérdidas por stock vencido</div>
+        </div>
+      </div>
+      
+      <!-- Detalles en tarjetas abajo -->
       <div class="two-col">
         <div class="audience-card">
-          <div class="audience-title"><span class="badge"><i class="fas fa-users"></i></span> Usuarios / Familias</div>
+          <div class="audience-title">
+            <span class="badge"><i class="fas fa-users"></i></span>
+            Usuarios / Familias
+          </div>
           <ul class="bullets">
-            <li><i class="fas fa-brain"></i> Olvidos frecuentes: se quedan sin productos básicos.</li>
-            <li><i class="fas fa-clock"></i> Tiempo perdido armando la lista y comparando precios.</li>
-            <li><i class="fas fa-dollar-sign"></i> Desperdicio de dinero por compras mal planificadas.</li>
+            <li><i class="fas fa-brain"></i>Olvidos frecuentes: se quedan sin productos básicos.</li>
+            <li><i class="fas fa-clock"></i>Tiempo perdido armando la lista y comparando precios.</li>
+            <li><i class="fas fa-dollar-sign"></i>Desperdicio de dinero por compras mal planificadas.</li>
           </ul>
         </div>
         <div class="audience-card">
-          <div class="audience-title"><span class="badge"><i class="fas fa-store"></i></span> Supermercados</div>
+          <div class="audience-title">
+            <span class="badge"><i class="fas fa-store"></i></span>
+            Supermercados
+          </div>
           <ul class="bullets">
-            <li><i class="fas fa-cart-arrow-down"></i> Pierden ventas por falta de “top of mind”.</li>
-            <li><i class="fas fa-chart-line"></i> Poca visibilidad de la demanda real.</li>
-            <li><i class="fas fa-user-clock"></i> Baja fidelización por falta de data accionable.</li>
+            <li><i class="fas fa-cart-arrow-down"></i>Pierden ventas por falta de "top of mind".</li>
+            <li><i class="fas fa-chart-line"></i>Poca visibilidad de la demanda real.</li>
+            <li><i class="fas fa-user-clock"></i>Baja fidelización por falta de data accionable.</li>
           </ul>
         </div>
       </div>
     </div>
 
-    <!-- 4 -->
+    <!-- 4 - Solución detallada -->
     <div class="slide slide4">
-      <h1 class="slide-title" style="font-size:3.5rem;margin-bottom:30px">Solución: Stocky</h1>
+      <h1 class="slide-title" style="font-size:3.5rem;margin-bottom:20px">Solución: Stocky</h1>
+      <div class="solution-description">
+        Un chatbot inteligente en WhatsApp que ayuda a las familias a gestionar su inventario, planificar compras y ahorrar, mientras impulsa las ventas de los supermercados.
+      </div>
+      
       <div class="solution-visual">
         <div class="whatsapp-phone">
           <div class="phone-screen">
-            <div style="display:flex;align-items:center;margin-bottom:20px"><i class="fab fa-whatsapp" style="color:#25D366;font-size:1.5rem;margin-right:10px"></i><span style="font-weight:600">Stocky Bot</span></div>
-            <div class="features-grid">
-              <div class="feature-item"><div class="feature-icon"><i class="fas fa-list"></i></div><div class="feature-text">Inventario automático</div></div>
-              <div class="feature-item"><div class="feature-icon"><i class="fas fa-list-check"></i></div><div class="feature-text">Lista de compras</div></div>
-              <div class="feature-item"><div class="feature-icon"><i class="fas fa-scale-balanced"></i></div><div class="feature-text">Comparación precios</div></div>
-              <div class="feature-item"><div class="feature-icon"><i class="fas fa-bell"></i></div><div class="feature-text">Recordatorios</div></div>
+            <div class="phone-header">
+              <i class="fab fa-whatsapp" style="color:#25D366;font-size:1.2rem;margin-right:8px"></i>
+              <span style="font-weight:600;font-size:0.9rem">Stocky Bot</span>
+            </div>
+            
+            <div class="functionalities-list">
+              <div class="functionality-item">
+                <span class="functionality-emoji">🏠</span>
+                <div class="functionality-text">
+                  <strong>Gestión de inventario:</strong> saber qué hay en casa y qué falta.
+                </div>
+              </div>
+              
+              <div class="functionality-item">
+                <span class="functionality-emoji">📝</span>
+                <div class="functionality-text">
+                  <strong>Listas colaborativas:</strong> automáticas, personalizadas y compartidas por la familia.
+                </div>
+              </div>
+              
+              <div class="functionality-item">
+                <span class="functionality-emoji">⏰</span>
+                <div class="functionality-text">
+                  <strong>Recordatorios inteligentes:</strong> evitar olvidos y compras de último momento.
+                </div>
+              </div>
+              
+              <div class="functionality-item">
+                <span class="functionality-emoji">💲</span>
+                <div class="functionality-text">
+                  <strong>Comparación de precios:</strong> elegir dónde conviene comprar.
+                </div>
+              </div>
+              
+              <div class="functionality-item">
+                <span class="functionality-emoji">🌐</span>
+                <div class="functionality-text">
+                  <strong>Compra online directa:</strong> conectar familias con supermercados.
+                </div>
+              </div>
+              
+              <div class="functionality-item">
+                <span class="functionality-emoji">📊</span>
+                <div class="functionality-text">
+                  <strong>Data insights:</strong> información sobre patrones de consumo real para supermercados.
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div style="display:flex;justify-content:center;gap:80px;margin-top:40px">
-        <div style="text-align:center"><div style="font-size:2.5rem;font-weight:700;color:#2D7A32;margin-bottom:10px">$15.000</div><div style="font-size:1.1rem;color:#666">ahorro anual por familia</div></div>
-        <div style="text-align:center"><div style="font-size:2.5rem;font-weight:700;color:#2D7A32;margin-bottom:10px">+25%</div><div style="font-size:1.1rem;color:#666">incremento ventas supermercados</div></div>
+        
+        <div class="benefits-section">
+          <div class="benefit-item">
+            <div class="benefit-amount">$33.000</div>
+            <div class="benefit-description">ahorro anual por familia</div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-amount">+25%</div>
+            <div class="benefit-description">incremento ventas supermercados</div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- 5 -->
+    <!-- 5 - Modelo de Negocio con detalles -->
     <div class="slide slide5">
       <h2 class="slide-title">Modelo de Negocio</h2>
       <div class="model-badge">Marketplace</div>
@@ -234,38 +1063,93 @@
           <div style="font-size:.9rem;color:#666">Catálogo & fulfillment</div>
         </div>
       </div>
-    </div>
-
-    <!-- 6 -->
-    <div class="slide slide6">
-      <h2 class="slide-title">Potencial de Mercado</h2>
-      <div class="market-wrap">
-        <div class="market-bar-chart">
-          <div class="bar">
-            <span class="label">TAM: Global Retail Digital</span>
-            <div class="value tam" style="width:100%;">USD 2.5B</div>
+      
+      <div style="background: white; border-radius: 20px; padding: 30px; margin: 30px auto 0; max-width: 800px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: left;">
+        <h3 style="color: #2D7A32; font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; text-align: center;">Detalle del modelo</h3>
+        <div style="display: grid; gap: 15px;">
+          <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <span style="color: #42BF4D; font-size: 1.1rem; margin-top: 2px;">✅</span>
+            <div>
+              <strong style="color: #2D7A32;">Familias:</strong> usan el chatbot gratis → más adopción y fidelidad.
+            </div>
           </div>
-          <div class="bar">
-            <span class="label">SAM: LATAM Apps Compras</span>
-            <div class="value sam" style="width:36%;">USD 450M</div>
+          <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <span style="color: #42BF4D; font-size: 1.1rem; margin-top: 2px;">✅</span>
+            <div>
+              <strong style="color: #2D7A32;">Supermercados:</strong> pagan solo por ventas efectivas → sin costos fijos, 100% variable.
+            </div>
           </div>
-          <div class="bar">
-            <span class="label">SOM: Argentina Local</span>
-            <div class="value som" style="width:20%;">USD 50M</div>
+          <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <span style="color: #42BF4D; font-size: 1.1rem; margin-top: 2px;">✅</span>
+            <div>
+              <strong style="color: #2D7A32;">Ingresos claros:</strong> comisión del <strong>3%–5% por transacción.</strong>
+            </div>
           </div>
         </div>
-
-        <div class="market-legend">
-          <h4>Niveles y alcance</h4>
-          <ul>
-            <li><strong>TAM</strong>: Familias que usan WhatsApp y compran en supermercados en América.</li>
-            <li><strong>SAM</strong>: Hogares argentinos que usan WhatsApp y compran en supermercados.</li>
-            <li><strong>SOM</strong>: Primer objetivo — Ciudad de Córdoba (1–2% de CBA Capital).</li>
-          </ul>
-          <div class="note">Nota: el ancho de barras es comparativo para legibilidad (no escala exacta).</div>
+        <div style="text-align: center; margin-top: 20px; padding: 15px; background: #f0f9ff; border-radius: 10px; border-left: 4px solid #42BF4D;">
+          <strong style="color: #2D7A32;">Modelo simple, escalable y transparente:</strong><br>
+          <span style="color: #666;">ganamos solo cuando los supermercados venden.</span>
         </div>
       </div>
     </div>
+
+    <!-- 6 — Potencial de Mercado (círculos con líneas y etiquetas) -->
+    <div class="slide slide6">
+      <h2 class="slide-title">Potencial de Mercado</h2>
+
+      <div class="market-rings">
+        <!-- Círculos concéntricos -->
+        <div class="rings">
+          <div class="ring tam">
+            <div class="center-tag">
+              TAM<br><small>Américas</small>
+            </div>
+          </div>
+          <div class="ring sam">
+            <div class="center-tag">
+              SAM<br><small>Argentina</small>
+            </div>
+          </div>
+          <div class="ring som">
+            <div class="center-tag">
+              SOM<br><small>Córdoba (Ciudad)</small>
+            </div>
+          </div>
+
+          <!-- puntos + líneas hacia tarjetas -->
+          <span class="dot tam"></span>
+          <div class="leader tam"></div>
+          <span class="dot sam"></span>
+          <div class="leader sam"></div>
+          <span class="dot som"></span>
+          <div class="leader som"></div>
+        </div>
+
+        <!-- Tarjetas con etiquetas y valores de la TABLA -->
+        <div class="labels">
+          <div class="label-card tam">
+            <h4>TAM — Alcance geográfico: América (LatAm + Norteamérica)</h4>
+            <p>Todas las familias que usan WhatsApp y hacen compras en supermercados en América.</p>
+            <span class="badge-val">~170 millones de hogares</span>
+          </div>
+
+          <div class="label-card sam">
+            <h4>SAM — Alcance geográfico: Argentina</h4>
+            <p>Hogares argentinos que usan WhatsApp y compran en supermercados.</p>
+            <span class="badge-val">~16 millones de hogares</span>
+          </div>
+
+          <div class="label-card som">
+            <h4>SOM — Alcance geográfico: Ciudad de Córdoba</h4>
+            <p>Primer mercado objetivo para validar el producto (1–2% de CBA Capital).</p>
+            <span class="badge-val">~6k–12k hogares</span>
+          </div>
+
+          <div class="note-legend">Nota: los diámetros no son a escala exacta; se optimiza la legibilidad.</div>
+        </div>
+      </div>
+    </div>
+
 
     <!-- 7 -->
     <div class="slide slide7">
@@ -290,15 +1174,32 @@
     <!-- 8 -->
     <div class="slide slide8">
       <div class="contact-logo">
-        <img src="./stocky-logo.png" alt="Logo Stocky" onerror="this.parentElement.innerHTML='<i class=&quot;fas fa-shopping-cart&quot; style=&quot;color:#42BF4D;font-size:3rem&quot;></i>'">
+        <img src="./stocky-logo.png" alt="Logo Stocky"
+          onerror="this.parentElement.innerHTML='<i class=&quot;fas fa-shopping-cart&quot; style=&quot;color:#42BF4D;font-size:3rem&quot;></i>'">
       </div>
       <h1 class="stocky-title">Stocky</h1>
-      <div class="contact-email">contacto@stocky.com</div>
+      <div class="contact-email">franco.tallone@stocky.com</div>
       <div class="social-icons">
-        <div class="social-icon"><i class="fab fa-linkedin"></i></div>
-        <div class="social-icon"><i class="fab fa-twitter"></i></div>
-        <div class="social-icon"><i class="fab fa-instagram"></i></div>
-        <div class="social-icon"><i class="fab fa-github"></i></div>
+        <div class="social-icon">
+          <a href="https://linkedin.com/company/stocky-app" target="_blank" style="color: inherit; text-decoration: none;">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+        <div class="social-icon">
+          <a href="https://twitter.com/stocky_app" target="_blank" style="color: inherit; text-decoration: none;">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+        <div class="social-icon">
+          <a href="https://instagram.com/stocky.app" target="_blank" style="color: inherit; text-decoration: none;">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <div class="social-icon">
+          <a href="https://github.com/stocky-team" target="_blank" style="color: inherit; text-decoration: none;">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -313,18 +1214,19 @@
     let currentSlide = 1;
     const totalSlides = 8;
 
-    function showSlide(n){
+    function showSlide(n) {
       const slides = document.querySelectorAll('.slide');
       const indicator = document.getElementById('current-slide');
-      if(n > totalSlides) currentSlide = 1;
-      if(n < 1) currentSlide = totalSlides;
+      if (n > totalSlides) currentSlide = 1;
+      if (n < 1) currentSlide = totalSlides;
       slides.forEach(s => s.classList.remove('active'));
       slides[currentSlide - 1].classList.add('active');
       if (indicator) indicator.textContent = currentSlide;
     }
-    function changeSlide(n){ currentSlide += n; showSlide(currentSlide); }
-    document.addEventListener('keydown', (e)=>{ if(e.key==='ArrowRight'||e.key===' ') changeSlide(1); if(e.key==='ArrowLeft') changeSlide(-1); });
+    function changeSlide(n) { currentSlide += n; showSlide(currentSlide); }
+    document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight' || e.key === ' ') changeSlide(1); if (e.key === 'ArrowLeft') changeSlide(-1); });
     showSlide(currentSlide);
   </script>
 </body>
+
 </html>
