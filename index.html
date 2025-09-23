@@ -9,841 +9,154 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #7dd3fc 0%, #42BF4D 100%);
-      overflow: hidden;
-      color: #333
-    }
-
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      height: 100vh
-    }
-
-    .slide {
-      display: none;
-      padding: 60px;
-      text-align: center;
-      height: 100vh;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      animation: fadeIn .8s ease-in-out
-    }
-
-    .slide.active {
-      display: flex
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px)
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0)
-      }
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box }
+    body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #7dd3fc 0%, #42BF4D 100%); overflow: hidden; color: #333 }
+    .slideshow-container { position: relative; width: 100%; height: 100vh }
+    .slide { display: none; padding: 60px; text-align: center; height: 100vh; flex-direction: column; justify-content: center; align-items: center; animation: fadeIn .8s ease-in-out }
+    .slide.active { display: flex }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
 
     /* Portada */
-    .slide1 {
-      background: linear-gradient(135deg, #7dd3fc 0%, #42BF4D 100%);
-      color: #fff
-    }
-
-    .logo-container {
-      margin-bottom: 40px;
-      animation: slideDown 1s ease-out
-    }
-
-    .logo {
-      width: 300px;
-      height: 300px;
-      background: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 60px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, .15)
-    }
-
-    .logo img {
-      width: 80%;
-      height: auto;
-      display: block
-    }
-
-    .stocky-title {
-      font-size: 4rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      text-shadow: 0 4px 8px rgba(0, 0, 0, .1)
-    }
-
-    .tagline {
-      font-size: 1.8rem;
-      font-weight: 300;
-      opacity: .9
-    }
+    .slide1{background:linear-gradient(135deg,#7dd3fc 0%,#42BF4D 100%);color:#fff}
+    .logo-container{margin-bottom:40px;animation:slideDown 1s ease-out}
+    .logo{width:300px;height:300px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 60px;box-shadow:0 30px 60px rgba(0,0,0,.15)}
+    .logo img{width:80%;height:auto;display:block}
+    .stocky-title{font-size:4rem;font-weight:700;margin-bottom:20px;text-shadow:0 4px 8px rgba(0,0,0,.1)}
+    .tagline{font-size:1.8rem;font-weight:300;opacity:.9}
 
     /* Equipo */
-    .slide2 {
-      background: #fff
-    }
+    .slide2{background:#fff}
+    .team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;margin-bottom:40px}
+    .team-member{display:flex;flex-direction:column;align-items:center}
+    .member-photo{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#42BF4D 0%,#7dd3fc 100%);margin-bottom:15px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;font-weight:600}
+    .member-photo img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+    .member-name{font-size:1.1rem;font-weight:600;color:#333}
+    .member-role{font-size:1rem;font-weight:600;color:#2D7A32;margin:4px 0}
+    .member-experience{font-size:.95rem;color:#7a7a7a;font-style:italic;display:inline-flex;align-items:center;gap:6px;margin-top:2px}
+    .company-logo{width:18px;height:18px;object-fit:contain;filter:grayscale(20%);vertical-align:middle}
 
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
-      margin-bottom: 40px
-    }
-
-    .team-member {
-      display: flex;
-      flex-direction: column;
-      align-items: center
-    }
-
-    .member-photo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #42BF4D 0%, #7dd3fc 100%);
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 2rem;
-      font-weight: 600
-    }
-
-    .member-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%
-    }
-
-    .member-name {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #333
-    }
-
-    .member-role {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #2D7A32;
-      margin: 4px 0
-    }
-
-    .member-experience {
-      font-size: .95rem;
-      color: #7a7a7a;
-      font-style: italic;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 2px
-    }
-
-    .company-logo {
-      width: 18px;
-      height: 18px;
-      object-fit: contain;
-      filter: grayscale(20%);
-      vertical-align: middle
-    }
-
-    /* Problema - Versión híbrida: números grandes + tarjetas originales */
+    /* Problema */
     .slide3{background:#f8fafc}
-    
-    .problem-blocks {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 60px;
-      margin: 20px auto 30px;
-      max-width: 1000px;
-    }
-    
-    .problem-block {
-      background: white;
-      border-radius: 20px;
-      padding: 30px 25px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-      text-align: center;
-      min-width: 280px;
-      transition: transform 0.3s ease;
-    }
-    
-    .problem-block:hover {
-      transform: translateY(-5px);
-    }
-    
-    .problem-icon {
-      font-size: 3.5rem;
-      margin-bottom: 15px;
-      display: block;
-    }
-    
-    .homes-block .problem-icon {
-      color: #7dd3fc;
-    }
-    
-    .supermarkets-block .problem-icon {
-      color: #42BF4D;
-    }
-    
-    .problem-amount {
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: #2D7A32;
-      margin-bottom: 10px;
-      line-height: 1.1;
-    }
-    
-    .problem-description {
-      font-size: 1rem;
-      color: #666;
-      font-weight: 500;
-      line-height: 1.3;
-    }
-    
-    .two-col {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(260px, 1fr));
-      gap: 40px;
-      max-width: 980px;
-      width: 100%;
-      margin: 20px auto 0;
-    }
-    
-    .audience-card {
-      background: white;
-      border-radius: 18px;
-      padding: 25px 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      text-align: left;
-      transition: transform 0.3s ease;
-    }
-    
-    .audience-card:hover {
-      transform: translateY(-3px);
-    }
-    
-    .audience-title {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: #2D7A32;
-      margin-bottom: 15px;
-    }
-    
-    .audience-title .badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #eaffef;
-      color: #2D7A32;
-    }
-    
-    .bullets {
-      display: grid;
-      gap: 10px;
-      color: #555;
-      font-size: 0.9rem;
-    }
-    
-    .bullets li {
-      list-style: none;
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-    }
-    
-    .bullets li i {
-      color: #42BF4D;
-      margin-top: 2px;
-      font-size: 0.9rem;
-    }
+    .problem-blocks{display:flex;align-items:center;justify-content:center;gap:60px;margin:20px auto 30px;max-width:1000px}
+    .problem-block{background:#fff;border-radius:20px;padding:30px 25px;box-shadow:0 15px 40px rgba(0,0,0,.1);text-align:center;min-width:280px;transition:transform .3s ease}
+    .problem-block:hover{transform:translateY(-5px)}
+    .problem-icon{font-size:3.5rem;margin-bottom:15px;display:block}
+    .homes-block .problem-icon{color:#7dd3fc}
+    .supermarkets-block .problem-icon{color:#42BF4D}
+    .problem-amount{font-size:2.8rem;font-weight:800;color:#2D7A32;margin-bottom:10px;line-height:1.1}
+    .problem-description{font-size:1rem;color:#666;font-weight:500;line-height:1.3}
+    .two-col{display:grid;grid-template-columns:repeat(2, minmax(260px,1fr));gap:40px;max-width:980px;width:100%;margin:20px auto 0}
+    .audience-card{background:#fff;border-radius:18px;padding:25px 20px;box-shadow:0 10px 30px rgba(0,0,0,.08);text-align:left;transition:transform .3s ease}
+    .audience-card:hover{transform:translateY(-3px)}
+    .audience-title{display:inline-flex;align-items:center;gap:12px;font-weight:700;font-size:1.2rem;color:#2D7A32;margin-bottom:15px}
+    .audience-title .badge{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#eaffef;color:#2D7A32}
+    .bullets{display:grid;gap:10px;color:#555;font-size:.9rem}
+    .bullets li{list-style:none;display:flex;gap:8px;align-items:flex-start}
+    .bullets li i{color:#42BF4D;margin-top:2px;font-size:.9rem}
 
-    /* Solución - Estilos actualizados */
-    .slide4 {
-      background: #fff
-    }
+    /* Solución */
+    .slide4{background:#fff}
+    .solution-description{font-size:1.2rem;color:#666;line-height:1.5;margin-bottom:40px;max-width:900px}
+    .solution-visual{display:flex;align-items:flex-start;justify-content:center;max-width:1200px;margin-bottom:40px;gap:60px}
+    .whatsapp-phone{width:320px;height:580px;background:#25D366;border-radius:30px;padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;color:#fff;position:relative;flex-shrink:0}
+    .phone-screen{background:#fff;border-radius:20px;width:100%;height:100%;padding:15px;color:#333;display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden}
+    .phone-header{display:flex;align-items:center;margin-bottom:15px;padding-bottom:10px;border-bottom:1px solid #eee}
+    .functionalities-list{flex:1;overflow-y:auto}
+    .functionality-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:12px;padding:8px;background:#f8f9fa;border-radius:8px;font-size:.75rem;line-height:1.3}
+    .functionality-emoji{font-size:.9rem;flex-shrink:0}
+    .functionality-text strong{color:#2D7A32;font-weight:600}
+    .benefits-section{display:flex;flex-direction:column;gap:30px;max-width:500px}
+    .benefit-item{text-align:center}
+    .benefit-amount{font-size:2.2rem;font-weight:700;color:#2D7A32;margin-bottom:8px}
+    .benefit-description{font-size:1rem;color:#666}
 
-    .solution-description {
-      font-size: 1.2rem;
-      color: #666;
-      line-height: 1.5;
-      margin-bottom: 40px;
-      max-width: 900px;
-    }
+    /* Modelo de negocio */
+    .slide5{background:#f8fafc}
+    .model-badge{display:inline-block;padding:10px 16px;border-radius:12px;background:#eaffef;color:#2D7A32;border:1px solid #42BF4D;font-weight:700;margin:-28px 0 24px 0}
+    .gtm-diagram{display:flex;align-items:center;justify-content:center;gap:36px;margin:10px auto 28px;max-width:900px}
+    .actor{background:#fff;border-radius:18px;padding:22px 28px;min-width:220px;box-shadow:0 10px 28px rgba(0,0,0,.08);text-align:center}
+    .actor i{font-size:2rem;color:#42BF4D;margin-bottom:8px;display:block}
+    .actor .label{font-weight:700;color:#2D7A32}
+    .flows{display:flex;flex-direction:column;align-items:center;gap:10px;color:#2D7A32}
+    .flows i{font-size:1.6rem}
 
-    .solution-visual {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      max-width: 1200px;
-      margin-bottom: 40px;
-      gap: 60px
-    }
-
-    .whatsapp-phone {
-      width: 320px;
-      height: 580px;
-      background: #25D366;
-      border-radius: 30px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      color: #fff;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .phone-screen {
-      background: #fff;
-      border-radius: 20px;
-      width: 100%;
-      height: 100%;
-      padding: 15px;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      overflow: hidden;
-    }
-
-    .phone-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #eee;
-    }
-
-    .functionalities-list {
-      flex: 1;
-      overflow-y: auto;
-    }
-
-    .functionality-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 12px;
-      padding: 8px;
-      background: #f8f9fa;
-      border-radius: 8px;
-      font-size: 0.75rem;
-      line-height: 1.3;
-    }
-
-    .functionality-emoji {
-      font-size: 0.9rem;
-      flex-shrink: 0;
-    }
-
-    .functionality-text strong {
-      color: #2D7A32;
-      font-weight: 600;
-    }
-
-    .benefits-section {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      max-width: 500px;
-    }
-
-    .benefit-item {
-      text-align: center;
-    }
-
-    .benefit-amount {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #2D7A32;
-      margin-bottom: 8px;
-    }
-
-    .benefit-description {
-      font-size: 1rem;
-      color: #666;
-    }
-
-    /* ===== Slide 5 — Modelo de Negocio (Marketplace) ===== */
-    .slide5 {
-      background: #f8fafc
-    }
-
-    .model-badge {
-      display: inline-block;
-      padding: 10px 16px;
-      border-radius: 12px;
-      background: #eaffef;
-      color: #2D7A32;
-      border: 1px solid #42BF4D;
-      font-weight: 700;
-      margin: -28px 0 24px 0
-    }
-
-    .gtm-diagram {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 36px;
-      margin: 10px auto 28px;
-      max-width: 900px
-    }
-
-    .actor {
-      background: #fff;
-      border-radius: 18px;
-      padding: 22px 28px;
-      min-width: 220px;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, .08);
-      text-align: center
-    }
-
-    .actor i {
-      font-size: 2rem;
-      color: #42BF4D;
-      margin-bottom: 8px;
-      display: block
-    }
-
-    .actor .label {
-      font-weight: 700;
-      color: #2D7A32
-    }
-
-    .flows {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      color: #2D7A32
-    }
-
-    .flows i {
-      font-size: 1.6rem
-    }
-
-    /* ====== SLIDE 6 — TAM/SAM/SOM sin líneas conectoras ====== */
-    .slide6 {
-      background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
-    }
-
-    .market-rings {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 60px;
-      flex-wrap: wrap;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .rings {
-      position: relative;
-      width: 450px;
-      height: 450px;
-    }
-
-    .ring {
-      position: absolute;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
-    }
-
-    .ring .center-tag {
-      color: #fff;
-      font-weight: 800;
-      letter-spacing: .4px;
-      line-height: 1.15;
-      font-size: 1.1rem;
-    }
-
-    .ring .center-tag small {
-      display: block;
-      font-weight: 600;
-      opacity: .95;
-      font-size: 0.8rem;
-    }
-
-    .ring.tam {
-      width: 450px;
-      height: 450px;
-      top: 0;
-      left: 0;
-      background: rgba(125, 211, 252, .4);
-      border: 3px solid #7dd3fc;
-      color: #0f3a6d;
-    }
-
-    .ring.sam {
-      width: 320px;
-      height: 320px;
-      top: 65px;
-      left: 65px;
-      background: rgba(66, 191, 77, .7);
-      border: 3px solid #42BF4D;
-      color: #0d3a1e;
-    }
-
-    .ring.som {
-      width: 190px;
-      height: 190px;
-      top: 130px;
-      left: 130px;
-      background: linear-gradient(135deg, #2D7A32, #1a5e20);
-      border: 3px solid #2D7A32;
-      color: #fff;
-    }
-
-    .labels {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .label-card {
-      width: 400px;
-      background: #fff;
-      border-radius: 18px;
-      padding: 20px 24px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
-      text-align: left;
-    }
-
-    .label-card h4 {
-      margin: 0 0 8px;
-      color: #2D7A32;
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
-
-    .label-card p {
-      margin: 0 0 12px;
-      color: #555;
-      line-height: 1.45;
-      font-size: .95rem
-    }
-
-    .market-stats {
-      display: flex;
-      gap: 15px;
-      margin-top: 8px;
-    }
-
-    .stat-badge {
-      display: inline-block;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: .85rem;
-    }
-
-    .label-card.tam .stat-badge {
-      color: #0f3a6d;
-      background: #d7efff;
-      border: 1px solid #7dd3fc;
-    }
-
-    .label-card.sam .stat-badge {
-      color: #0d3a1e;
-      background: #e6f8ea;
-      border: 1px solid #42BF4D;
-    }
-
-    .label-card.som .stat-badge {
-      color: #fff;
-      background: #2D7A32;
-      border: 1px solid #2D7A32;
-    }
-
-    .revenue-badge {
-      background: #fff3cd;
-      border: 1px solid #ffc107;
-      color: #856404;
-      font-weight: 800;
-    }
-
-    .note-legend {
-      margin-top: 15px;
-      font-size: .85rem;
-      color: #777;
-      text-align: center;
-    }
-
+    /* Potencial mercado (círculos sin flechas) */
+    .slide6{background:linear-gradient(135deg,#e0f2fe 0%,#f0f9ff 100%)}
+    .market-rings{display:flex;align-items:center;justify-content:center;gap:60px;flex-wrap:wrap;max-width:1200px;margin:0 auto}
+    .rings{position:relative;width:450px;height:450px}
+    .ring{position:absolute;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+    .ring .center-tag{color:#fff;font-weight:800;letter-spacing:.4px;line-height:1.15;font-size:1.1rem}
+    .ring .center-tag small{display:block;font-weight:600;opacity:.95;font-size:.8rem}
+    .ring.tam{width:450px;height:450px;top:0;left:0;background:rgba(125,211,252,.4);border:3px solid #7dd3fc;color:#0f3a6d}
+    .ring.sam{width:320px;height:320px;top:65px;left:65px;background:rgba(66,191,77,.7);border:3px solid #42BF4D;color:#0d3a1e}
+    .ring.som{width:190px;height:190px;top:130px;left:130px;background:linear-gradient(135deg,#2D7A32,#1a5e20);border:3px solid #2D7A32;color:#fff}
+    .labels{display:flex;flex-direction:column;gap:20px}
+    .label-card{width:400px;background:#fff;border-radius:18px;padding:20px 24px;box-shadow:0 12px 30px rgba(0,0,0,.10);text-align:left}
+    .label-card h4{margin:0 0 8px;color:#2D7A32;font-size:1.1rem;font-weight:700}
+    .label-card p{margin:0 0 12px;color:#555;line-height:1.45;font-size:.95rem}
+    .market-stats{display:flex;gap:15px;margin-top:8px}
+    .stat-badge{display:inline-block;padding:6px 12px;border-radius:999px;font-weight:700;font-size:.85rem}
+    .label-card.tam .stat-badge{color:#0f3a6d;background:#d7efff;border:1px solid #7dd3fc}
+    .label-card.sam .stat-badge{color:#0d3a1e;background:#e6f8ea;border:1px solid #42BF4D}
+    .label-card.som .stat-badge{color:#fff;background:#2D7A32;border:1px solid #2D7A32}
+    .revenue-badge{background:#fff3cd;border:1px solid #ffc107;color:#856404;font-weight:800}
+    .note-legend{margin-top:15px;font-size:.85rem;color:#777;text-align:center}
 
     /* Pricing */
-    .slide7 {
-      background: #f8fafc
-    }
-
-    .pricing-comparison {
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      margin-bottom: 40px
-    }
-
-    .pricing-card {
-      background: #fff;
-      padding: 40px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
-      min-width: 200px
-    }
-
-    .pricing-icon {
-      font-size: 3rem;
-      margin-bottom: 20px
-    }
-
-    .families-card .pricing-icon {
-      color: #7dd3fc
-    }
-
-    .supermarkets-card .pricing-icon {
-      color: #42BF4D
-    }
-
-    .pricing-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 15px
-    }
-
-    .pricing-amount {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #2D7A32;
-      margin-bottom: 10px
-    }
-
-    .pricing-detail {
-      font-size: .9rem;
-      color: #666
-    }
+    .slide7{background:#f8fafc}
+    .pricing-comparison{display:flex;justify-content:center;gap:60px;margin-bottom:40px}
+    .pricing-card{background:#fff;padding:40px;border-radius:20px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.1);min-width:200px}
+    .pricing-icon{font-size:3rem;margin-bottom:20px}
+    .families-card .pricing-icon{color:#7dd3fc}
+    .supermarkets-card .pricing-icon{color:#42BF4D}
+    .pricing-title{font-size:1.3rem;font-weight:600;margin-bottom:15px}
+    .pricing-amount{font-size:2rem;font-weight:700;color:#2D7A32;margin-bottom:10px}
+    .pricing-detail{font-size:.9rem;color:#666}
 
     /* Contacto */
-    .slide8 {
-      background: linear-gradient(135deg, #2D7A32 0%, #42BF4D 100%);
-      color: #fff
-    }
+    .slide8{background:linear-gradient(135deg,#2D7A32 0%,#42BF4D 100%);color:#fff}
+    .contact-logo{width:150px;height:150px;background:#fff;border-radius:50%;margin:0 auto 40px;display:flex;align-items:center;justify-content:center}
+    .contact-logo img{width:78%;height:auto;display:block}
+    .contact-email{font-size:2rem;font-weight:600;margin-bottom:30px}
 
-    .contact-logo {
-      width: 150px;
-      height: 150px;
-      background: #fff;
-      border-radius: 50%;
-      margin: 0 auto 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center
-    }
+    .social-icons{display:flex;gap:30px;justify-content:center;align-items:flex-start;margin-bottom:24px}
+    .social-item{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:120px}
+    .social-icon{width:60px;height:60px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;transition:.3s}
+    .social-icon:hover{background:rgba(255,255,255,.3);transform:translateY(-5px)}
+    .social-caption{font-size:.95rem;font-weight:600;letter-spacing:.2px}
+    .social-link{color:inherit;text-decoration:none}
 
-    .contact-logo img {
-      width: 78%;
-      height: auto;
-      display: block
-    }
-
-    .contact-email {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 30px
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 30px;
-      justify-content: center
-    }
-
-    .social-icon {
-      width: 60px;
-      height: 60px;
-      background: rgba(255, 255, 255, .2);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      transition: .3s
-    }
-
-    .social-icon:hover {
-      background: rgba(255, 255, 255, .3);
-      transform: translateY(-5px)
-    }
+    .qr-card{margin-top:18px;background:#ffffff; color:#123; padding:18px; border-radius:16px; box-shadow:0 10px 28px rgba(0,0,0,.18); display:flex; align-items:center; gap:16px}
+    .qr-img{width:110px;height:110px;border-radius:12px;object-fit:cover;background:#f2f2f2}
+    .qr-text h4{margin:0 0 6px;color:#2D7A32}
+    .qr-text p{margin:0;color:#555}
+    .qr-placeholder{width:110px;height:110px;border-radius:12px;background:repeating-linear-gradient(45deg,#e5e5e5 0 10px,#f5f5f5 10px 20px);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:#666}
 
     /* Títulos, nav, etc */
-    .slide-title {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 60px;
-      color: #2D7A32
-    }
+    .slide-title{font-size:3rem;font-weight:700;margin-bottom:60px;color:#2D7A32}
+    .slide1 .slide-title,.slide8 .slide-title{color:#fff}
+    .team-description{font-size:1.3rem;color:#666;max-width:800px;line-height:1.6}
+    .slide-indicator{position:fixed;top:30px;right:30px;color:rgba(255,255,255,.8);font-size:1.1rem;font-weight:600;z-index:1000}
+    .slide2 .slide-indicator,.slide3 .slide-indicator,.slide4 .slide-indicator,.slide5 .slide-indicator,.slide6 .slide-indicator,.slide7 .slide-indicator{color:rgba(51,51,51,.8)}
+    .navigation{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:15px;z-index:9999}
+    .nav-btn{padding:12px 24px;background:rgba(255,255,255,.95);border:none;border-radius:25px;cursor:pointer;font-weight:600;color:#333;backdrop-filter:blur(6px);box-shadow:0 6px 16px rgba(0,0,0,.18)}
+    .nav-btn:hover{background:#fff;transform:translateY(-2px)}
+    @keyframes slideDown{from{transform:translateY(-50px);opacity:0} to{transform:translateY(0);opacity:1}}
 
-    .slide1 .slide-title,
-    .slide8 .slide-title {
-      color: #fff
-    }
-
-    .team-description {
-      font-size: 1.3rem;
-      color: #666;
-      max-width: 800px;
-      line-height: 1.6
-    }
-
-    .slide-indicator {
-      position: fixed;
-      top: 30px;
-      right: 30px;
-      color: rgba(255, 255, 255, .8);
-      font-size: 1.1rem;
-      font-weight: 600;
-      z-index: 1000
-    }
-
-    .slide2 .slide-indicator,
-    .slide3 .slide-indicator,
-    .slide4 .slide-indicator,
-    .slide5 .slide-indicator,
-    .slide6 .slide-indicator,
-    .slide7 .slide-indicator {
-      color: rgba(51, 51, 51, .8)
-    }
-
-    .navigation {
-      position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 15px;
-      z-index: 9999
-    }
-
-    .nav-btn {
-      padding: 12px 24px;
-      background: rgba(255, 255, 255, .95);
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: 600;
-      color: #333;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, .18)
-    }
-
-    .nav-btn:hover {
-      background: #fff;
-      transform: translateY(-2px)
-    }
-
-    @keyframes slideDown {
-      from {
-        transform: translateY(-50px);
-        opacity: 0
-      }
-
-      to {
-        transform: translateY(0);
-        opacity: 1
-      }
-    }
-
-    @media (max-width:768px) {
-      .slide {
-        padding: 30px 20px
-      }
-
-      .stocky-title {
-        font-size: 2.6rem
-      }
-
-      .tagline {
-        font-size: 1.2rem
-      }
-
-      .team-grid {
-        grid-template-columns: 1fr;
-        gap: 30px
-      }
-
-      .problem-blocks {
-        flex-direction: column;
-        gap: 30px;
-        margin-bottom: 30px;
-      }
-      
-      .two-col {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .solution-visual {
-        flex-direction: column;
-        gap: 30px;
-        align-items: center;
-      }
-      
-      .whatsapp-phone {
-        width: 280px;
-        height: 500px;
-      }
-      
-      .benefits-section {
-        flex-direction: row;
-        justify-content: space-around;
-        max-width: 100%;
-      }
-
-      .pricing-comparison {
-        flex-direction: column;
-        gap: 24px
-      }
-      
-      .gtm-diagram {
-        flex-direction: column;
-        gap: 20px;
-      }
-      
-      .flows {
-        transform: rotate(90deg);
-      }
+    @media (max-width:768px){
+      .slide{padding:30px 20px}
+      .stocky-title{font-size:2.6rem}
+      .tagline{font-size:1.2rem}
+      .team-grid{grid-template-columns:1fr;gap:30px}
+      .problem-blocks{flex-direction:column;gap:30px;margin-bottom:30px}
+      .two-col{grid-template-columns:1fr;gap:20px}
+      .solution-visual{flex-direction:column;gap:30px;align-items:center}
+      .whatsapp-phone{width:280px;height:500px}
+      .benefits-section{flex-direction:row;justify-content:space-around;max-width:100%}
+      .pricing-comparison{flex-direction:column;gap:24px}
+      .gtm-diagram{flex-direction:column;gap:20px}
+      .flows{transform:rotate(90deg)}
+      .qr-card{flex-direction:column;text-align:center}
     }
   </style>
 </head>
@@ -857,7 +170,7 @@
       <div class="logo-container">
         <div class="logo">
           <img src="./stocky-logo.png" alt="Logo Stocky"
-            onerror="this.parentElement.innerHTML='<i class=&quot;fas fa-shopping-cart&quot; style=&quot;color:#42BF4D;font-size:3.2rem&quot;></i>'">
+               onerror="this.parentElement.innerHTML='<i class=&quot;fas fa-shopping-cart&quot; style=&quot;color:#42BF4D;font-size:3.2rem&quot;></i>'">
         </div>
       </div>
       <h1 class="stocky-title">Stocky</h1>
@@ -872,60 +185,48 @@
           <div class="member-photo"><img src="./franco.jpeg" alt="Franco Tallone Maffia"></div>
           <div class="member-name">Franco Tallone Maffia</div>
           <div class="member-role">CEO</div>
-          <div class="member-experience">Ex Product Manager Mercado Libre <img class="company-logo"
-              src="./logos/mercadolibre.png" alt="Mercado Libre" onerror="this.style.display='none'"></div>
+          <div class="member-experience">Ex Product Manager Mercado Libre <img class="company-logo" src="./logos/mercadolibre.png" alt="Mercado Libre" onerror="this.style.display='none'"></div>
         </div>
         <div class="team-member">
           <div class="member-photo"><img src="./lu.jpeg" alt="Lucila Gomez"></div>
           <div class="member-name">Lucila Gomez</div>
           <div class="member-role">CTO</div>
-          <div class="member-experience">Ex Tech Lead Globant <img class="company-logo" src="./logos/globant.png"
-              alt="Globant" onerror="this.style.display='none'"></div>
+          <div class="member-experience">Ex Tech Lead Globant <img class="company-logo" src="./logos/globant.png" alt="Globant" onerror="this.style.display='none'"></div>
         </div>
         <div class="team-member">
           <div class="member-photo"><img src="./fotos/valentina.jpg" alt="Valentina Perona"></div>
           <div class="member-name">Valentina Perona</div>
           <div class="member-role">CFO</div>
-          <div class="member-experience">Ex Product Manager Ualá <img class="company-logo" src="./logos/uala.png"
-              alt="Ualá" onerror="this.style.display='none'"></div>
+          <div class="member-experience">Ex Product Manager Ualá <img class="company-logo" src="./logos/uala.png" alt="Ualá" onerror="this.style.display='none'"></div>
         </div>
         <div class="team-member">
           <div class="member-photo"><img src="./santos.jpeg" alt="Santos Romero Reyna"></div>
           <div class="member-name">Santos Romero Reyna</div>
           <div class="member-role">CMO</div>
-          <div class="member-experience">Ex Marketing Lead Despegar <img class="company-logo" src="./logos/despegar.png"
-              alt="Despegar" onerror="this.style.display='none'"></div>
+          <div class="member-experience">Ex Marketing Lead Despegar <img class="company-logo" src="./logos/despegar.png" alt="Despegar" onerror="this.style.display='none'"></div>
         </div>
       </div>
       <p class="team-description">Equipo de Ingeniería de Sistemas con experiencia en IA, software y gestión.</p>
     </div>
 
-    <!-- 3 - Versión híbrida: números grandes + detalles en tarjetas -->
+    <!-- 3 -->
     <div class="slide slide3">
       <h2 class="slide-title">El Problema</h2>
-      
-      <!-- Números grandes arriba -->
       <div class="problem-blocks">
         <div class="problem-block homes-block">
           <i class="fas fa-home problem-icon"></i>
-          <div class="problem-amount">$1.5 MM </div>
+          <div class="problem-amount">$1.5 MM</div>
           <div class="problem-description">desperdiciados por hogar/año</div>
         </div>
-        
         <div class="problem-block supermarkets-block">
           <i class="fas fa-shopping-cart problem-icon"></i>
           <div class="problem-amount">Millones</div>
           <div class="problem-description">en pérdidas por stock vencido</div>
         </div>
       </div>
-      
-      <!-- Detalles en tarjetas abajo -->
       <div class="two-col">
         <div class="audience-card">
-          <div class="audience-title">
-            <span class="badge"><i class="fas fa-users"></i></span>
-            Usuarios / Familias
-          </div>
+          <div class="audience-title"><span class="badge"><i class="fas fa-users"></i></span>Usuarios / Familias</div>
           <ul class="bullets">
             <li><i class="fas fa-brain"></i>Olvidos frecuentes: se quedan sin productos básicos.</li>
             <li><i class="fas fa-clock"></i>Tiempo perdido armando la lista y comparando precios.</li>
@@ -933,10 +234,7 @@
           </ul>
         </div>
         <div class="audience-card">
-          <div class="audience-title">
-            <span class="badge"><i class="fas fa-store"></i></span>
-            Supermercados
-          </div>
+          <div class="audience-title"><span class="badge"><i class="fas fa-store"></i></span>Supermercados</div>
           <ul class="bullets">
             <li><i class="fas fa-cart-arrow-down"></i>Pierden ventas por falta de "top of mind".</li>
             <li><i class="fas fa-chart-line"></i>Poca visibilidad de la demanda real.</li>
@@ -946,154 +244,64 @@
       </div>
     </div>
 
-    <!-- 4 - Solución detallada -->
+    <!-- 4 -->
     <div class="slide slide4">
       <h1 class="slide-title" style="font-size:3.5rem;margin-bottom:20px">Solución: Stocky</h1>
       <div class="solution-description">
         Un chatbot inteligente en WhatsApp que ayuda a las familias a gestionar su inventario, planificar compras y ahorrar, mientras impulsa las ventas de los supermercados.
       </div>
-      
       <div class="solution-visual">
         <div class="whatsapp-phone">
           <div class="phone-screen">
-            <div class="phone-header">
-              <i class="fab fa-whatsapp" style="color:#25D366;font-size:1.2rem;margin-right:8px"></i>
-              <span style="font-weight:600;font-size:0.9rem">Stocky Bot</span>
-            </div>
-            
+            <div class="phone-header"><i class="fab fa-whatsapp" style="color:#25D366;font-size:1.2rem;margin-right:8px"></i><span style="font-weight:600;font-size:0.9rem">Stocky Bot</span></div>
             <div class="functionalities-list">
-              <div class="functionality-item">
-                <span class="functionality-emoji">🏠</span>
-                <div class="functionality-text">
-                  <strong>Gestión de inventario:</strong> saber qué hay en casa y qué falta.
-                </div>
-              </div>
-              
-              <div class="functionality-item">
-                <span class="functionality-emoji">📝</span>
-                <div class="functionality-text">
-                  <strong>Listas colaborativas:</strong> automáticas, personalizadas y compartidas por la familia.
-                </div>
-              </div>
-              
-              <div class="functionality-item">
-                <span class="functionality-emoji">⏰</span>
-                <div class="functionality-text">
-                  <strong>Recordatorios inteligentes:</strong> evitar olvidos y compras de último momento.
-                </div>
-              </div>
-              
-              <div class="functionality-item">
-                <span class="functionality-emoji">💲</span>
-                <div class="functionality-text">
-                  <strong>Comparación de precios:</strong> elegir dónde conviene comprar.
-                </div>
-              </div>
-              
-              <div class="functionality-item">
-                <span class="functionality-emoji">🌐</span>
-                <div class="functionality-text">
-                  <strong>Compra online directa:</strong> conectar familias con supermercados.
-                </div>
-              </div>
-              
-              <div class="functionality-item">
-                <span class="functionality-emoji">📊</span>
-                <div class="functionality-text">
-                  <strong>Data insights:</strong> información sobre patrones de consumo real para supermercados.
-                </div>
-              </div>
+              <div class="functionality-item"><span class="functionality-emoji">🏠</span><div class="functionality-text"><strong>Gestión de inventario:</strong> saber qué hay en casa y qué falta.</div></div>
+              <div class="functionality-item"><span class="functionality-emoji">📝</span><div class="functionality-text"><strong>Listas colaborativas:</strong> automáticas, personalizadas y compartidas por la familia.</div></div>
+              <div class="functionality-item"><span class="functionality-emoji">⏰</span><div class="functionality-text"><strong>Recordatorios inteligentes:</strong> evitar olvidos y compras de último momento.</div></div>
+              <div class="functionality-item"><span class="functionality-emoji">💲</span><div class="functionality-text"><strong>Comparación de precios:</strong> elegir dónde conviene comprar.</div></div>
+              <div class="functionality-item"><span class="functionality-emoji">🌐</span><div class="functionality-text"><strong>Compra online directa:</strong> conectar familias con supermercados.</div></div>
+              <div class="functionality-item"><span class="functionality-emoji">📊</span><div class="functionality-text"><strong>Data insights:</strong> información sobre patrones de consumo real para supermercados.</div></div>
             </div>
           </div>
         </div>
-        
         <div class="benefits-section">
-          <div class="benefit-item">
-            <div class="benefit-amount">$132.000</div>
-            <div class="benefit-description">ahorro mensual por familia</div>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-amount">+27%</div>
-            <div class="benefit-description">incremento ventas supermercados</div>
-          </div>
+          <div class="benefit-item"><div class="benefit-amount">$132.000</div><div class="benefit-description">ahorro mensual por familia</div></div>
+          <div class="benefit-item"><div class="benefit-amount">+27%</div><div class="benefit-description">incremento ventas supermercados</div></div>
         </div>
       </div>
     </div>
 
-    <!-- 5 - Modelo de Negocio con detalles -->
+    <!-- 5 -->
     <div class="slide slide5">
       <h2 class="slide-title">Modelo de Negocio</h2>
       <div class="model-badge">Marketplace</div>
       <div class="gtm-diagram">
-        <div class="actor">
-          <i class="fa-solid fa-house-chimney"></i>
-          <div class="label">Hogares</div>
-          <div style="font-size:.9rem;color:#666">Listas desde WhatsApp</div>
-        </div>
-        <div class="flows">
-          <i class="fa-solid fa-right-left" title="Oferta ⇄ Demanda"></i>
-          <i class="fa-solid fa-handshake" title="Match & transacción"></i>
-          <i class="fa-solid fa-chart-line" title="Data para personalización"></i>
-        </div>
-        <div class="actor">
-          <i class="fa-solid fa-building"></i>
-          <div class="label">Supermercados</div>
-          <div style="font-size:.9rem;color:#666">Catálogo & fulfillment</div>
-        </div>
+        <div class="actor"><i class="fa-solid fa-house-chimney"></i><div class="label">Hogares</div><div style="font-size:.9rem;color:#666">Listas desde WhatsApp</div></div>
+        <div class="flows"><i class="fa-solid fa-right-left" title="Oferta ⇄ Demanda"></i><i class="fa-solid fa-handshake" title="Match & transacción"></i><i class="fa-solid fa-chart-line" title="Data para personalización"></i></div>
+        <div class="actor"><i class="fa-solid fa-building"></i><div class="label">Supermercados</div><div style="font-size:.9rem;color:#666">Catálogo & fulfillment</div></div>
       </div>
-      
-      <div style="background: white; border-radius: 20px; padding: 30px; margin: 30px auto 0; max-width: 800px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: left;">
-        <h3 style="color: #2D7A32; font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; text-align: center;">Detalle del modelo</h3>
-        <div style="display: grid; gap: 15px;">
-          <div style="display: flex; align-items: flex-start; gap: 12px;">
-            <span style="color: #42BF4D; font-size: 1.1rem; margin-top: 2px;">✅</span>
-            <div>
-              <strong style="color: #2D7A32;">Familias:</strong> usan el chatbot gratis → más adopción y fidelidad.
-            </div>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 12px;">
-            <span style="color: #42BF4D; font-size: 1.1rem; margin-top: 2px;">✅</span>
-            <div>
-              <strong style="color: #2D7A32;">Supermercados:</strong> pagan solo por ventas efectivas → sin costos fijos, 100% variable.
-            </div>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 12px;">
-            <span style="color: #42BF4D; font-size: 1.1rem; margin-top: 2px;">✅</span>
-            <div>
-              <strong style="color: #2D7A32;">Ingresos claros:</strong> comisión del <strong>3%–5% por transacción.</strong>
-            </div>
-          </div>
+      <div style="background:#fff;border-radius:20px;padding:30px;margin:30px auto 0;max-width:800px;box-shadow:0 10px 30px rgba(0,0,0,.08);text-align:left">
+        <h3 style="color:#2D7A32;font-size:1.5rem;font-weight:700;margin-bottom:20px;text-align:center">Detalle del modelo</h3>
+        <div style="display:grid;gap:15px">
+          <div style="display:flex;align-items:flex-start;gap:12px"><span style="color:#42BF4D;font-size:1.1rem;margin-top:2px">✅</span><div><strong style="color:#2D7A32">Familias:</strong> usan el chatbot gratis → más adopción y fidelidad.</div></div>
+          <div style="display:flex;align-items:flex-start;gap:12px"><span style="color:#42BF4D;font-size:1.1rem;margin-top:2px">✅</span><div><strong style="color:#2D7A32">Supermercados:</strong> pagan solo por ventas efectivas → sin costos fijos, 100% variable.</div></div>
+          <div style="display:flex;align-items:flex-start;gap:12px"><span style="color:#42BF4D;font-size:1.1rem;margin-top:2px">✅</span><div><strong style="color:#2D7A32">Ingresos claros:</strong> comisión del <strong>3%–5% por transacción.</strong></div></div>
         </div>
-        <div style="text-align: center; margin-top: 20px; padding: 15px; background: #f0f9ff; border-radius: 10px; border-left: 4px solid #42BF4D;">
-          <strong style="color: #2D7A32;">Modelo simple, escalable y transparente:</strong><br>
-          <span style="color: #666;">ganamos solo cuando los supermercados venden.</span>
+        <div style="text-align:center;margin-top:20px;padding:15px;background:#f0f9ff;border-radius:10px;border-left:4px solid #42BF4D">
+          <strong style="color:#2D7A32">Modelo simple, escalable y transparente:</strong><br><span style="color:#666">ganamos solo cuando los supermercados venden.</span>
         </div>
       </div>
     </div>
 
-    <!-- 6 — Potencial de Mercado sin líneas conectoras -->
+    <!-- 6 -->
     <div class="slide slide6">
       <h2 class="slide-title">Potencial de Mercado</h2>
-
       <div class="market-rings">
         <div class="rings">
-          <div class="ring tam">
-            <div class="center-tag">
-              TAM<br><small>América</small>
-            </div>
-          </div>
-          <div class="ring sam">
-            <div class="center-tag">
-              SAM<br><small>Argentina</small>
-            </div>
-          </div>
-          <div class="ring som">
-            <div class="center-tag">
-              SOM<br><small>Córdoba</small>
-            </div>
-          </div>
+          <div class="ring tam"><div class="center-tag">TAM<br><small>América</small></div></div>
+          <div class="ring sam"><div class="center-tag">SAM<br><small>Argentina</small></div></div>
+          <div class="ring som"><div class="center-tag">SOM<br><small>Córdoba</small></div></div>
         </div>
-
         <div class="labels">
           <div class="label-card tam">
             <h4>TAM — América (LatAm + Norteamérica)</h4>
@@ -1103,7 +311,6 @@
               <span class="stat-badge revenue-badge">USD 4.080 M / año</span>
             </div>
           </div>
-
           <div class="label-card sam">
             <h4>SAM — Argentina</h4>
             <p>Hogares argentinos que usan WhatsApp y compran en supermercados.</p>
@@ -1112,7 +319,6 @@
               <span class="stat-badge revenue-badge">USD 384 M / año</span>
             </div>
           </div>
-
           <div class="label-card som">
             <h4>SOM — Ciudad de Córdoba (1–2% hogares capital)</h4>
             <p>Primer mercado objetivo para validar el producto.</p>
@@ -1123,56 +329,62 @@
           </div>
         </div>
       </div>
-
-      <div class="note-legend">
-        Nota: los diámetros no son a escala exacta; se optimiza la legibilidad.
-      </div>
+      <div class="note-legend">Nota: los diámetros no son a escala exacta; se optimiza la legibilidad.</div>
     </div>
-
 
     <!-- 7 -->
     <div class="slide slide7">
       <h2 class="slide-title">Pricing</h2>
       <div class="pricing-comparison">
-        <div class="pricing-card families-card">
-          <div class="pricing-icon"><i class="fas fa-users"></i></div>
-          <div class="pricing-title">Familias</div>
-          <div class="pricing-amount">GRATIS</div>
-          <div class="pricing-detail">sin costo</div>
-        </div>
-        <div class="pricing-card supermarkets-card">
-          <div class="pricing-icon"><i class="fas fa-store"></i></div>
-          <div class="pricing-title">Supermercados</div>
-          <div class="pricing-amount">3–5%</div>
-          <div class="pricing-detail">comisión por venta</div>
-        </div>
+        <div class="pricing-card families-card"><div class="pricing-icon"><i class="fas fa-users"></i></div><div class="pricing-title">Familias</div><div class="pricing-amount">GRATIS</div><div class="pricing-detail">sin costo</div></div>
+        <div class="pricing-card supermarkets-card"><div class="pricing-icon"><i class="fas fa-store"></i></div><div class="pricing-title">Supermercados</div><div class="pricing-amount">3–5%</div><div class="pricing-detail">comisión por venta</div></div>
       </div>
       <p class="team-description">Escalable y sostenible</p>
     </div>
 
-    <!-- 8 -->
+    <!-- 8 (Contacto con usuarios + QR) -->
     <div class="slide slide8">
       <div class="contact-logo">
         <img src="./stocky-logo.png" alt="Logo Stocky"
-          onerror="this.parentElement.innerHTML='<i class=&quot;fas fa-shopping-cart&quot; style=&quot;color:#42BF4D;font-size:3rem&quot;></i>'">
+             onerror="this.parentElement.innerHTML='<i class=&quot;fas fa-shopping-cart&quot; style=&quot;color:#42BF4D;font-size:3rem&quot;></i>'">
       </div>
       <h1 class="stocky-title">Stocky</h1>
       <div class="contact-email">info@stocky.com</div>
+
       <div class="social-icons">
-        <div class="social-icon">
-          <a href="https://linkedin.com/company/stocky-app" target="_blank" style="color: inherit; text-decoration: none;">
-            <i class="fab fa-linkedin"></i>
+        <!-- LinkedIn -->
+        <div class="social-item">
+          <a class="social-link" href="https://linkedin.com/company/stocky-app" target="_blank" rel="noopener">
+            <div class="social-icon"><i class="fab fa-linkedin"></i></div>
           </a>
+          <div class="social-caption">/stocky-app</div> <!-- EDITAR -->
         </div>
-        <div class="social-icon">
-          <a href="https://twitter.com/stocky_app" target="_blank" style="color: inherit; text-decoration: none;">
-            <i class="fab fa-twitter"></i>
+
+        <!-- Twitter/X -->
+        <div class="social-item">
+          <a class="social-link" href="https://twitter.com/stocky_app" target="_blank" rel="noopener">
+            <div class="social-icon"><i class="fab fa-twitter"></i></div>
           </a>
+          <div class="social-caption">@stocky_app</div> <!-- EDITAR -->
         </div>
-        <div class="social-icon">
-          <a href="https://instagram.com/stocky.app" target="_blank" style="color: inherit; text-decoration: none;">
-            <i class="fab fa-instagram"></i>
+
+        <!-- Instagram -->
+        <div class="social-item">
+          <a class="social-link" href="https://instagram.com/stocky.app" target="_blank" rel="noopener">
+            <div class="social-icon"><i class="fab fa-instagram"></i></div>
           </a>
+          <div class="social-caption">@stocky.app</div> <!-- EDITAR -->
+        </div>
+      </div>
+
+      <!-- QR de WhatsApp -->
+      <div class="qr-card" style="max-width:420px;">
+        <!-- si tenés el PNG del QR, ponelo en ./whatsapp-qr.png -->
+        <img class="qr-img" src="./whatsapp-qr.jpeg" alt="QR WhatsApp"
+             onerror="this.outerHTML='<div class=&quot;qr-placeholder&quot;>QR WhatsApp</div>'">
+        <div class="qr-text">
+          <h4>WhatsApp</h4>
+          <p>Escaneá para chatear con <strong>Stocky</strong> o abrí <a href="https://wa.me/5493512456452" target="_blank" rel="noopener" style="color:#1e7a34;text-decoration:underline">wa.me/5493512456452</a> <!-- EDITAR -->.</p>
         </div>
       </div>
     </div>
@@ -1197,10 +409,9 @@
       slides[currentSlide - 1].classList.add('active');
       if (indicator) indicator.textContent = currentSlide;
     }
-    function changeSlide(n) { currentSlide += n; showSlide(currentSlide); }
-    document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight' || e.key === ' ') changeSlide(1); if (e.key === 'ArrowLeft') changeSlide(-1); });
+    function changeSlide(n){ currentSlide += n; showSlide(currentSlide); }
+    document.addEventListener('keydown', (e)=>{ if(e.key==='ArrowRight' || e.key===' ') changeSlide(1); if(e.key==='ArrowLeft') changeSlide(-1); });
     showSlide(currentSlide);
   </script>
 </body>
-
 </html>
